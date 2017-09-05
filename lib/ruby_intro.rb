@@ -1,5 +1,5 @@
 # When done, submit this entire file to the autograder.
-
+require 'byebug'
 # Part 1
 
 def sum arr
@@ -16,11 +16,16 @@ def max_2_sum arr
 end
 
 def sum_to_n? arr, n
-  if arr.length < 2
-    return false
+  debugger
+  hash = Hash.new
+  arr.each do |val|
+    if hash.key? val
+      return true
+    else
+      hash[n-val] = val
+    end
   end
-  
-  arr.combination(2).map {|ar| sum(ar)} .select {|s| s == n} .length > 0
+ return false
 end
 
 # Part 2
